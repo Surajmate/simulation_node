@@ -1,5 +1,5 @@
 {
-    "dbName": "new_db",
+    "dbName": "simulation_db",
     "dbConfig": {
         "server": "localhost",
         "options": {
