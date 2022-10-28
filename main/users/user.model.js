@@ -1,4 +1,6 @@
-const { DataTypes } = require('sequelize');
+const {
+    DataTypes
+} = require('sequelize');
 
 module.exports = model;
 
@@ -9,27 +11,43 @@ function model(sequelize) {
             autoIncrement: true,
             primaryKey: true
         },
-        emp_id: { type: DataTypes.STRING, allowNull: false },
-        name: { type: DataTypes.STRING, allowNull: false },
-        date_of_birth: { type: DataTypes.DATEONLY, allowNull: false },
-        mobilenumber: { type: DataTypes.BIGINT, allowNull: false },
-        email_id: { type: DataTypes.STRING, allowNull: false },
-        country: { type: DataTypes.STRING, allowNull: false },
-        states: { type: DataTypes.INTEGER, allowNull: false },
-        city: { type: DataTypes.INTEGER, allowNull: false },
-        empToken:{ type: DataTypes.STRING, allowNull: false },
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false
+        }, 
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        username: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        contact: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        address: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        password: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
     };
 
     const options = {
         defaultScope: {
-            attributes: { exclude: ['hash'] }
+            attributes: {
+                exclude: ['hash']
+            }
         },
         scopes: {
-            withHash: { attributes: {}, }
+            withHash: {
+                attributes: {},
+            }
         }
     };
-     return sequelize.define('users', attributes, options);
+    return sequelize.define('users', attributes, options);
 }
-
-
-
