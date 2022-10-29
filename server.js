@@ -9,7 +9,11 @@ const errorHandler = require('_middleware/error-handler');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cors({
+  credentials: true,
+  origin: true
+}));
+app.options('*', cors());
 
 // api routes
 app.use('/users', require('./main/users/users.controller'));
