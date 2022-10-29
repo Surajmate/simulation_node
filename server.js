@@ -16,6 +16,7 @@ app.use(cors({
 app.options('*', cors());
 
 // api routes
+app.get('/', (req, res) => res.send('Working!!!'));
 app.use('/users', require('./main/users/users.controller'));
 // global error handler
 app.use(errorHandler);
