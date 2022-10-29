@@ -1,16 +1,16 @@
 {
-    "dbName": "simulation_db",
+    "dbName": "dap7oa99qgfi7j",
     "dbConfig": {
         "server": "localhost",
         "options": {
-            "port": 3306,
+            "port": 5432,
             "trustServerCertificate": true
         },
         "authentication": {
             "type": "default",
             "options": {
-                "userName": "root",
-                "password": ""
+                "userName": "jtqxiwinlvpchz",
+                "password": "e807401d4393da842fcfb70a93439d0bc8a25737fb50286992114c931f53a584"
             }
         }
     },
