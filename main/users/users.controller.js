@@ -8,7 +8,7 @@ const { required } = require('joi');
 
 // routes
 
-router.get('/user_data', authorize(), user_data);
+router.get('/user_data', user_data);
 router.post('/login', authenticateSchema, user_login);
 router.post('/register', registerSchema, create_user);
 
