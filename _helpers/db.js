@@ -28,6 +28,6 @@ async function initialize() {
 
 
     // sync all models with database
-    // await sequelize.sync({ alter: true });
+    await sequelize.sync({ alter: true });
 
 }
