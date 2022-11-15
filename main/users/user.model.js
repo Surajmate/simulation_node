@@ -2,11 +2,11 @@ const {
     DataTypes
 } = require('sequelize');
 
-module.exports = model;
+module.exports = {users, login};
 
-function model(sequelize) {
+function users(sequelize) {
     const attributes = {
-        id: {
+        user_id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true
@@ -50,4 +50,56 @@ function model(sequelize) {
         }
     };
     return sequelize.define('users', attributes, options);
+}
+
+function login(sequelize) {
+    const attributes = {
+        id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true
+        },
+        user_id: {
+            type: DataTypes.INTEGER,
+            
+        },
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false
+        }, 
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        username: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        contact: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        accessToken: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        token: {
+            type: DataTypes.STRING,
+            allowNull: false
+        }
+    };
+
+    const options = {
+        defaultScope: {
+            attributes: {
+                exclude: ['hash']
+            }
+        },
+        scopes: {
+            withHash: {
+                attributes: {},
+            }
+        }
+    };
+    return sequelize.define('login', attributes, options);
 }

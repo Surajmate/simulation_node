@@ -7,8 +7,9 @@ const userService = require('./user.service');
 const { required } = require('joi');
 
 // routes
-router.get('/user_data', user_data);
-router.post('/login', user_login);
+
+router.get('/user_data', authorize(), user_data);
+router.post('/login', authenticateSchema, user_login);
 router.post('/register', registerSchema, create_user);
 
 module.exports = router;
@@ -21,6 +22,14 @@ function registerSchema(req, res, next) {
         contact:Joi.number().required(),
         address:Joi.string().required(),
         password:Joi.string().required()
+    });
+    validateRequest(req, next, schema);
+}
+
+function authenticateSchema(req, res, next) {
+    const schema = Joi.object({
+        email: Joi.string().required(),
+        password: Joi.string().required()
     });
     validateRequest(req, next, schema);
 }

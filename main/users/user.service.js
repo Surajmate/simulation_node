@@ -31,6 +31,14 @@ async function user_data() {
 }
 
 async function user_login({ email, password }) {
+    // const user = await db.User.scope('withHash').findOne({ where: { email } });
+    // if (!user || !(await bcrypt.compare(password, user.hash)))
+    //     throw 'Username or password is incorrect';
+         
+    //     // authentication successful
+    // const token = jwt.sign({ sub: user.id }, config.secret, { expiresIn: '7d' });
+    // return { ...omitHash(user.get()), token };
+
     const existing = await db.User.scope('withHash').findOne({
         where: { email }
     });
@@ -42,10 +50,24 @@ async function user_login({ email, password }) {
             status: 401,
             message: 'Username and password not matched.'
         };
+        var accessToken = makeid(10)+'.'+makeid(5);
+        const token = jwt.sign({ sub: user.user_id }, config.secret, { expiresIn: '1d' });
+        // var token_ = { ...omitHash(user.get()), token };
+        var userData = {
+            "accessToken": accessToken,
+            "token": token,
+            "user_id": user.user_id,
+            "name": user.name,
+            "contact": user.contact,
+            "email": user.email,
+            "username": user.username
+        }
+        await db.login.create(userData);
+
         return {
             status: 200,
             message: 'User found.',
-            result: user
+            result: {accessToken : accessToken, bearer: token, userData: userData}
         }
     } else {
         return {
@@ -53,6 +75,16 @@ async function user_login({ email, password }) {
             message: 'User not found.'
         }
     }
+}
+
+function makeid(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
 }
 
 async function create_user(params) {

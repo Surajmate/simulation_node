@@ -1,5 +1,5 @@
 {
-    "dbName": "dap7oa99qgfi7j",
+    "dbName": "simulation_db",
     "dbConfig": {
         "server": "localhost",
         "options": {
@@ -9,10 +9,10 @@
         "authentication": {
             "type": "default",
             "options": {
-                "userName": "jtqxiwinlvpchz",
-                "password": "e807401d4393da842fcfb70a93439d0bc8a25737fb50286992114c931f53a584"
+                "userName": "root",
+                "password": ""
             }
         }
     },
-    "secret": "THIS IS USED TO SIGN AND VERIFY JWT TOKENS, REPLACE IT WITH YOUR OWN SECRET, IT CAN BE ANY STRING"
+    "secret": "SIMULATION PRIVACY TOKENS"
 }
