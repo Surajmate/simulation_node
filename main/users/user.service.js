@@ -31,6 +31,8 @@ async function user_data() {
 }
 
 async function user_login({ email, password }) {
+    var email = Buffer.from(email, 'base64').toString('ascii');
+    var password = Buffer.from(password, 'base64').toString('ascii');
     // const user = await db.User.scope('withHash').findOne({ where: { email } });
     // if (!user || !(await bcrypt.compare(password, user.hash)))
     //     throw 'Username or password is incorrect';
@@ -52,7 +54,6 @@ async function user_login({ email, password }) {
         };
         var accessToken = makeid(10)+'.'+makeid(5);
         const token = jwt.sign({ sub: user.user_id }, config.secret, { expiresIn: '1d' });
-        // var token_ = { ...omitHash(user.get()), token };
         var userData = {
             "accessToken": accessToken,
             "token": token,

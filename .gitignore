@@ -132,3 +132,23 @@ dist
 # config.json
 main/.DS_Store
 package-lock.json
+
+
+# {
+#     "dbName": "dap7oa99qgfi7j",
+#     "dbConfig": {
+#         "server": "ec2-34-234-240-121.compute-1.amazonaws.com",
+#         "options": {
+#             "port": 5432,
+#             "trustServerCertificate": true
+#         },
+#         "authentication": {
+#             "type": "default",
+#             "options": {
+#                 "userName": "jtqxiwinlvpchz",
+#                 "password": "e807401d4393da842fcfb70a93439d0bc8a25737fb50286992114c931f53a584"
+#             }
+#         }
+#     },
+#     "secret": "SIMULATION PRIVACY TOKENS"
+# }
